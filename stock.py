@@ -1,7 +1,11 @@
 import time
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
-driver = webdriver.Chrome('/usr/bin/chromedriver')  # Optional argument, if not specified will search path.
+chrome_options = Options()
+chrome_options.add_argument("--headless")
+
+driver = webdriver.Chrome('/usr/bin/chromedriver', chrome_options = chrome_options)  # Optional argument, if not specified will search path.
 driver.get('http://stockboard.sbsc.com.vn/apps/StockBoard/SBSC/HOSE.html');
 time.sleep(10) # Let the user actually see something!
 boardData = driver.find_element_by_id('boardData')
